@@ -1,0 +1,72 @@
+//colors
+@import "_brand.scss";
+
+.bs-callout {
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid $color_gallery_approx;
+    border-left-width: 5px;
+    //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+    border-radius: 3px;
+
+    a {
+        i {
+            padding-right: 4px;
+        }
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+
+    h3, h4 {
+        margin-top: 0;
+        margin-bottom: 5px;
+    }
+
+    p:last-child {
+        margin-bottom: 0;
+    }
+
+    + .bs-callout {
+        margin-top: -5px;
+    }
+
+
+    &.bs-callout-default {
+        border-left-color: $color_grey;
+        color: $color_grey;
+    }
+
+    &.bs-callout-primary {
+        border-left-color: $color_dark_blue;
+
+        h3, h4, .fa {
+            color: $color_dark_blue;
+        }
+    }
+
+    &.bs-callout-success {
+        border-left-color: $color_green;
+
+        h3, h4, .fa {
+            color: $color_green;
+        }
+    }
+
+    &.bs-callout-danger {
+        border-left-color: $color_red;
+
+        h3, h4, .fa {
+            color: $color_red;
+        }
+    }
+
+    &.bs-callout-warning {
+        border-left-color: $color_orange;
+
+        h3, h4, fa {
+            color: $color_orange;
+        }
+    }
+}

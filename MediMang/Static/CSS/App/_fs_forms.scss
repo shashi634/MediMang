@@ -1,0 +1,710 @@
+/*
+    To allow styling of form as well as controls, ngModel adds these CSS classes:
+
+ng-valid: the model is valid
+ng-invalid: the model is invalid
+ng-valid-[key]: for each valid key added by $setValidity
+ng-invalid-[key]: for each invalid key added by $setValidity
+ng-pristine: the control hasn't been interacted with yet
+ng-dirty: the control has been interacted with
+ng-touched: the control has been blurred
+ng-untouched: the control hasn't been blurred
+ng-pending: any $asyncValidators are unfulfilled
+
+*/
+
+@import "_brand.scss";
+
+$state-success-text: #3c763d !default;
+$state-success-bg: #dff0d8 !default;
+$state-success-border: darken(adjust-hue($state-success-bg, -10), 5%) !default;
+
+$state-info-text: #31708f !default;
+$state-info-bg: #d9edf7 !default;
+$state-info-border: darken(adjust-hue($state-info-bg, -10), 7%) !default;
+
+$state-warning-text: #8a6d3b !default;
+$state-warning-bg: #fcf8e3 !default;
+$state-warning-border: darken(adjust-hue($state-warning-bg, -10), 5%) !default;
+
+$state-danger-text: #a94442 !default;
+$state-danger-bg: #f2dede !default;
+$state-danger-border: darken(adjust-hue($state-danger-bg, -10), 5%) !default;
+
+
+@mixin box-shadow($shadow...) {
+    -webkit-box-shadow: $shadow; // iOS <4.3 & Android <4.1
+    box-shadow: $shadow;
+}
+
+@mixin form-control-validation($text-color: #555, $border-color: #ccc, $background-color: #f5f5f5) {
+    // Color the label and help text
+    .help-block,
+    .control-label,
+    .radio,
+    .checkbox,
+    .radio-inline,
+    .checkbox-inline,
+    &.radio label,
+    &.checkbox label,
+    &.radio-inline label,
+    &.checkbox-inline label {
+        color: $text-color;
+    }
+    // Set the border and box shadow on specific inputs to match
+    .form-control,
+    &.form-control {
+        border-color: $border-color;
+        @include box-shadow(inset 0 1px 1px rgba(0,0,0,.075)); // Redeclare so transitions work
+        &:focus {
+            border-color: darken($border-color, 10%);
+            $shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 6px lighten($border-color, 20%);
+            @include box-shadow($shadow);
+        }
+    }
+    // Set validation states also for addons
+    .input-group-addon {
+        color: $text-color;
+        border-color: $border-color;
+        background-color: $background-color;
+    }
+    // Optional feedback icon
+    .form-control-feedback {
+        color: $text-color;
+    }
+}
+
+
+.ng-submitted .ng-invalid {
+    @include form-control-validation($state-danger-text, $state-danger-text, $state-danger-bg);
+}
+
+.form-group-lg {
+    label {
+        font-weight: 500;
+        font-size: 19px;
+        height: 20px;
+        line-height: 20.8999996185303px;
+    }
+}
+
+.has-error {
+    label {
+        color: $state-danger-text;
+    }
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak],
+.ng-cloak, .x-ng-cloak,
+.ng-hide:not(.ng-hide-animate) {
+    display: none !important;
+}
+
+ng\:form {
+    display: block;
+}
+
+.floating-label {
+    position: relative;
+    padding-top: 22px;
+}
+
+.floating-label label {
+    position: absolute;
+    top: 2px;
+    left: 0;
+    color: #006A98;
+    font-size: 14px;
+    -webkit-transform: translateY(20px);
+    -ms-transform: translateY(20px);
+    transform: translateY(20px);
+    transition: -webkit-transform 0.15s ease-in;
+    transition: transform 0.15s ease-in;
+}
+
+.floating-label label.active {
+    -webkit-transform: translateY(0px);
+    -ms-transform: translateY(0px);
+    transform: translateY(0px);
+}
+
+.floating-label input {
+    position: relative;
+    padding: 6px 10px !important;
+}
+
+input[type="checkbox"].ios-switch {
+    position: absolute;
+    opacity: 0;
+}
+
+/* Normal Track */
+input[type="checkbox"].ios-switch + div {
+    vertical-align: middle;
+    width: 40px;
+    height: 20px;
+    border: 1px solid rgba(0,0,0,.4);
+    border-radius: 999px;
+    background-color: rgba(0, 0, 0, 0.1);
+    -webkit-transition-duration: .4s;
+    -webkit-transition-property: background-color, box-shadow;
+    box-shadow: inset 0 0 0 0px rgba(0,0,0,0.4);
+    margin: 15px 1.2em 15px 2.5em;
+}
+
+/* Checked Track (Blue) */
+input[type="checkbox"].ios-switch:checked + div {
+    width: 40px;
+    background-position: 0 0;
+    background-color: #286090;
+    border: 1px solid darken(#286090, 10);
+    box-shadow: inset 0 0 0 10px rgba(59,137,259,1);
+}
+
+/* Tiny Track */
+input[type="checkbox"].tinyswitch.ios-switch + div {
+    width: 34px;
+    height: 18px;
+}
+
+/* Big Track */
+input[type="checkbox"].bigswitch.ios-switch + div {
+    width: 50px;
+    height: 25px;
+}
+
+/* Green Track */
+input[type="checkbox"].green.ios-switch:checked + div {
+    background-color: #00e359;
+    border: 1px solid rgba(0, 162, 63,1);
+    box-shadow: inset 0 0 0 10px rgba(0,227,89,1);
+}
+
+
+/* Normal Knob */
+input[type="checkbox"].ios-switch + div > div {
+    float: left;
+    width: 18px;
+    height: 18px;
+    border-radius: inherit;
+    background: #ffffff;
+    /*-webkit-transition-timing-function: cubic-bezier(.54,1.85,.5,1);
+    -webkit-transition-duration: 0.4s;
+    -webkit-transition-property: transform, background-color, box-shadow;
+    -moz-transition-timing-function: cubic-bezier(.54,1.85,.5,1);
+    -moz-transition-duration: 0.4s;
+    -moz-transition-property: transform, background-color;*/
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3), 0px 0px 0 1px rgba(0, 0, 0, 0.4);
+    pointer-events: none;
+    margin-top: 1px;
+    margin-left: 1px;
+}
+
+/* Checked Knob (Blue Style) */
+input[type="checkbox"].ios-switch:checked + div > div {
+    -webkit-transform: translate3d(20px, 0, 0);
+    -moz-transform: translate3d(20px, 0, 0);
+    background-color: #ffffff;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3), 0px 0px 0 1px rgba(8, 80, 172,1);
+}
+
+/* Tiny Knob */
+input[type="checkbox"].tinyswitch.ios-switch + div > div {
+    width: 16px;
+    height: 16px;
+    margin-top: 1px;
+}
+
+/* Checked Tiny Knob (Blue Style) */
+input[type="checkbox"].tinyswitch.ios-switch:checked + div > div {
+    -webkit-transform: translate3d(16px, 0, 0);
+    -moz-transform: translate3d(16px, 0, 0);
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3), 0px 0px 0 1px rgba(8, 80, 172,1);
+}
+
+/* Big Knob */
+input[type="checkbox"].bigswitch.ios-switch + div > div {
+    width: 23px;
+    height: 23px;
+    margin-top: 1px;
+}
+
+/* Checked Big Knob (Blue Style) */
+input[type="checkbox"].bigswitch.ios-switch:checked + div > div {
+    -webkit-transform: translate3d(25px, 0, 0);
+    -moz-transform: translate3d(16px, 0, 0);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3), 0px 0px 0 1px rgba(8, 80, 172,1);
+}
+
+/* Green Knob */
+input[type="checkbox"].green.ios-switch:checked + div > div {
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(0, 162, 63,1);
+}
+
+
+legend {
+    font-size: 16px;
+}
+
+.checkbox {
+    padding-left: 20px;
+
+    label {
+        display: inline-block;
+        vertical-align: middle;
+        position: relative;
+        padding-left: 5px;
+    }
+
+    label::before {
+        content: "";
+        display: inline-block;
+        position: absolute;
+        width: 17px;
+        height: 17px;
+        left: 0;
+        margin-left: -20px;
+        border: 1px solid #cccccc;
+        //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+        border-radius: 3px;
+        background-color: $white;
+        //Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+        transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+    }
+
+    label::after {
+        display: inline-block;
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        left: 0;
+        top: 0;
+        margin-left: -20px;
+        padding-left: 3px;
+        padding-top: 1px;
+        font-size: 11px;
+        color: #555555;
+    }
+
+    input[type="checkbox"] {
+        opacity: 0;
+        z-index: 1;
+
+        &:disabled {
+            + label {
+                opacity: 0.65;
+            }
+
+            + label::before {
+                background-color: #eeeeee;
+                cursor: not-allowed;
+            }
+        }
+
+        &:focus + label::before {
+            outline: thin dotted;
+            outline-offset: -2px;
+        }
+
+        &:checked + label::after {
+            font-family: FontAwesome;
+            content: "\f00c";
+        }
+    }
+
+    input[type="radio"] {
+        opacity: 0;
+        z-index: 1;
+
+        &:disabled {
+            + label {
+                opacity: 0.65;
+            }
+
+            + label::before {
+                background-color: #eeeeee;
+                cursor: not-allowed;
+            }
+        }
+
+        &:focus + label::before {
+            outline: thin dotted;
+            outline-offset: -2px;
+        }
+
+        &:checked + label::after {
+            font-family: FontAwesome;
+            content: "\f00c";
+        }
+    }
+
+    &.checkbox-inline {
+        margin-top: 0;
+    }
+
+    &.checkbox-circle label::before {
+        //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+        border-radius: 50%;
+    }
+}
+
+.checkbox-primary {
+    input[type="checkbox"]:checked {
+        + label::before {
+            background-color: #337ab7;
+            border-color: #337ab7;
+        }
+
+        + label::after {
+            color: $white;
+        }
+    }
+
+    input[type="radio"]:checked {
+        + label::before {
+            background-color: #337ab7;
+            border-color: #337ab7;
+        }
+
+        + label::after {
+            color: $white;
+        }
+    }
+}
+
+.checkbox-danger {
+    input[type="checkbox"]:checked {
+        + label::before {
+            background-color: #d9534f;
+            border-color: #d9534f;
+        }
+
+        + label::after {
+            color: $white;
+        }
+    }
+
+    input[type="radio"]:checked {
+        + label::before {
+            background-color: #d9534f;
+            border-color: #d9534f;
+        }
+
+        + label::after {
+            color: $white;
+        }
+    }
+}
+
+.checkbox-info {
+    input[type="checkbox"]:checked {
+        + label::before {
+            background-color: #5bc0de;
+            border-color: #5bc0de;
+        }
+
+        + label::after {
+            color: $white;
+        }
+    }
+
+    input[type="radio"]:checked {
+        + label::before {
+            background-color: #5bc0de;
+            border-color: #5bc0de;
+        }
+
+        + label::after {
+            color: $white;
+        }
+    }
+}
+
+.checkbox-warning {
+    input[type="checkbox"]:checked {
+        + label::before {
+            background-color: #f0ad4e;
+            border-color: #f0ad4e;
+        }
+
+        + label::after {
+            color: $white;
+        }
+    }
+
+    input[type="radio"]:checked {
+        + label::before {
+            background-color: #f0ad4e;
+            border-color: #f0ad4e;
+        }
+
+        + label::after {
+            color: $white;
+        }
+    }
+}
+
+.checkbox-success {
+    input[type="checkbox"]:checked {
+        + label::before {
+            background-color: #5cb85c;
+            border-color: #5cb85c;
+        }
+
+        + label::after {
+            color: $white;
+        }
+    }
+
+    input[type="radio"]:checked {
+        + label::before {
+            background-color: #5cb85c;
+            border-color: #5cb85c;
+        }
+
+        + label::after {
+            color: $white;
+        }
+    }
+}
+
+.radio {
+    padding-left: 20px;
+
+    label {
+        display: inline-block;
+        vertical-align: middle;
+        position: relative;
+        padding-left: 5px;
+    }
+
+    label::before {
+        content: "";
+        display: inline-block;
+        position: absolute;
+        width: 17px;
+        height: 17px;
+        left: 0;
+        margin-left: -20px;
+        border: 1px solid #cccccc;
+        //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+        border-radius: 50%;
+        background-color: $white;
+        //Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+        transition: border 0.15s ease-in-out;
+    }
+
+    label::after {
+        display: inline-block;
+        position: absolute;
+        content: " ";
+        width: 11px;
+        height: 11px;
+        left: 3px;
+        top: 3px;
+        margin-left: -20px;
+        //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+        border-radius: 50%;
+        background-color: #555555;
+        //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+        transform: scale(0, 0);
+        //Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+        transition: transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
+    }
+
+    input[type="radio"] {
+        opacity: 0;
+        z-index: 1;
+
+        &:disabled {
+            + label {
+                opacity: 0.65;
+            }
+
+            + label::before {
+                cursor: not-allowed;
+            }
+        }
+
+        &:focus + label::before {
+            outline: thin dotted;
+            outline-offset: -2px;
+        }
+
+        &:checked + label::after {
+            //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+            transform: scale(1, 1);
+        }
+    }
+
+    &.radio-inline {
+        margin-top: 0;
+    }
+}
+
+input[type="checkbox"] {
+    &.styled:checked + label:after {
+        font-family: FontAwesome;
+        content: "\f00c";
+    }
+
+    .styled:checked {
+        + label::before {
+            color: $white;
+        }
+
+        + label::after {
+            color: $white;
+        }
+    }
+}
+
+input[type="radio"] {
+    &.styled:checked + label:after {
+        font-family: FontAwesome;
+        content: "\f00c";
+    }
+
+    .styled:checked {
+        + label::before {
+            color: $white;
+        }
+
+        + label::after {
+            color: $white;
+        }
+    }
+}
+
+.radio-primary input[type="radio"] {
+    + label::after {
+        background-color: #337ab7;
+    }
+
+    &:checked {
+        + label::before {
+            border-color: #337ab7;
+        }
+
+        + label::after {
+            background-color: #337ab7;
+        }
+    }
+}
+
+.radio-danger input[type="radio"] {
+    + label::after {
+        background-color: #d9534f;
+    }
+
+    &:checked {
+        + label::before {
+            border-color: #d9534f;
+        }
+
+        + label::after {
+            background-color: #d9534f;
+        }
+    }
+}
+
+.radio-info input[type="radio"] {
+    + label::after {
+        background-color: #5bc0de;
+    }
+
+    &:checked {
+        + label::before {
+            border-color: #5bc0de;
+        }
+
+        + label::after {
+            background-color: #5bc0de;
+        }
+    }
+}
+
+.radio-warning input[type="radio"] {
+    + label::after {
+        background-color: #f0ad4e;
+    }
+
+    &:checked {
+        + label::before {
+            border-color: #f0ad4e;
+        }
+
+        + label::after {
+            background-color: #f0ad4e;
+        }
+    }
+}
+
+.radio-success input[type="radio"] {
+    + label::after {
+        background-color: #5cb85c;
+    }
+
+    &:checked {
+        + label::before {
+            border-color: #5cb85c;
+        }
+
+        + label::after {
+            background-color: #5cb85c;
+        }
+    }
+}
+
+.ng-invalid-required:required {
+    background-image: url('/Static/images/icons/astro.png');
+    background-repeat: no-repeat;
+    background-size: 15px;
+    background-position: right 10px center;
+}
+
+
+label.label-block {
+    display: block;
+}
+
+.modal-dialog {
+    .email-type,
+    .phone-type {
+        width: auto;
+        padding-right: 40px;
+    }
+
+    .dropdown [data-toggle] {
+        margin: 0;
+    }
+
+    .progress-bullets {
+        text-align: center;
+        padding: 0;
+        margin: 0 0 -40px;
+    }
+
+    .navigation {
+        margin-top: -30px;
+    }
+
+    .progress-bullets li {
+        display: inline-block;
+        height: 8px;
+        width: 8px;
+        margin: 0 3px;
+        background: transparent;
+        border: 2px solid #CCCCCC;
+        border-radius: 50%;
+    }
+
+    .progress-bullets li.active {
+        background: #006495;
+        border-color: #006495;
+    }
+
+    .progress-bullets li.current {
+        border-color: #006495;
+    }
+}

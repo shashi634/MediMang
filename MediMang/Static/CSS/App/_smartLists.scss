@@ -1,0 +1,187 @@
+body {
+    .dropdown-menu > li > div {
+        display: block;
+        // padding: 3px 20px; // causing an issue with other select drowndowns and single pick lists
+        clear: both;
+        font-weight: normal;
+        color: #333333;
+        white-space: nowrap;
+
+        .input-group {
+            min-width: 300px;
+        }
+
+        .input-group-addon select {
+            width: initial;
+        }
+    }
+
+    .btn-group .fa-times-circle {
+        color: #ccc;
+        transition: all .3s;
+
+        &:hover {
+            color: #333;
+        }
+    }
+
+    .constraints {
+        .dropdown-menu > li > div {
+            // white-space: normal;
+        }
+
+        .ui-select-choices.dropdown-menu {
+            //hackillac to get a drop down inside a dropdown
+            position: static;
+        }
+    }
+}
+
+
+
+
+
+
+
+.smartlist-container{
+    .column-toggle-button {
+        padding: 6px;
+        font-size: 13px;
+        text-align: left;
+        margin-top: 0 !important;
+        border-top-width: 0;
+        border-radius: 0;
+
+        &:first-child{
+            border-top-width: 1px;
+        }
+    }
+
+    .column-group-container > .btn{
+        text-align: left;
+        margin-bottom: 8px;
+    }
+
+    .column-group{
+        margin-bottom: 16px;
+        margin-top: 8px;
+    }
+
+    .columns {
+        margin-top: 18px;
+    }
+    .block-web .header {
+        padding-bottom: 10px;
+    }
+    .column-toggle-button:before {
+        font-family: 'fontawesome';
+        opacity: 0.5;
+        display: inline-block;
+        margin-right: 8px;
+        font-size: 125%;
+        width: 20px;
+    }
+    .column-toggle-button.btn-primary:before {
+        content: '\f00c';
+    }
+    .column-toggle-button.btn-default:before {
+        content: '\f00d';
+        opacity: 0.3;
+    }
+    .header .pull-right .btn {
+        font-size: 12px !important;
+    }
+    .header .pull-right .btn i {
+        color: #ababab;
+    }
+    .header .pull-right .btn {
+        font-size: 12px;
+    }
+    .block-web.empty {
+        padding-bottom: 0;
+    }
+    .constraints > div {
+        display: block;
+    }
+    .constraints button {
+        float: none !important;
+    }
+    .edit-constraint {
+        margin-top: 10px;
+        right: 0;
+        overflow: visible !important;
+        left: auto;
+        padding: 10px;
+    }
+    .edit-constraint .btn {
+        font-size: 13px;
+        margin-left: 12px;
+    }
+    .edit-constraint:before {
+        position: absolute;
+        content: '';
+        height: 0;
+        width: 0;
+        border-width: 11px 9px;
+        bottom: 100%;
+        left: auto;
+        right: 23px;
+        border-style: solid;
+        border-color: transparent transparent #CCCCCC;
+    }
+    .edit-constraint:after {
+        position: absolute;
+        content: '';
+        height: 0;
+        width: 0;
+        border-width: 10px 8px;
+        bottom: 100%;
+        left: auto;
+        right: 24px;
+        border-style: solid;
+        border-color: transparent transparent #FFFFFF;
+    }
+    .add-filter-toggle {
+        margin-top: 20px;
+        margin-bottom: 12px;
+    }
+    .constraints > div > .btn {
+        text-align: left;
+        display: flex;
+        width: 100%;
+    }
+    .constraints > div > .btn span {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        flex: 1 1 100%;
+        margin-right: 6px;
+    }
+    .constraints > div > .btn div {
+        flex: 0 0 auto;
+    }
+    .btn-group .fa-cog {
+        color: #CCCCCC;
+        transition: all 0.3s;
+    }
+    .btn-group .fa-cog:hover {
+        color: #333333;
+    }
+    .input-group-addon.no-bg {
+        background: transparent;
+        border: 0;
+        vertical-align: top;
+    }
+
+    .constraint-column-list{
+        right: 0;
+        padding: 10px 70px 0 10px;
+
+        h4{
+            background: #f4f4f4;
+            padding: 10px;
+            margin: 0 -70px 0 -10px;
+        }
+
+    }
+}

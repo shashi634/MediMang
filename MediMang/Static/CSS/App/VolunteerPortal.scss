@@ -1,0 +1,266 @@
+@import "brand";
+
+.wrap-engagement {
+    margin-top: 20px;
+
+    .fa-star {
+        color: rgba(255,155,0, 0.8);
+    }
+
+    div.engagement {
+        border-bottom: 1px solid #CCCCCC;
+        margin: 0 0;
+        position: relative;
+
+        .pad-top {
+            padding-top: 10px;
+        }
+
+        &:nth-child(11n+1) {
+            a.engagement:hover, .engagement-detail {
+                box-shadow: inset 3px 0px 0px 0px #A3CD3B;
+
+                .icon-wrap i {
+                    background-color: #A3CD3B;
+                }
+            }
+        }
+
+        &:nth-child(11n+2) {
+            a.engagement:hover, .engagement-detail {
+                box-shadow: inset 3px 0px 0px 0px #F47920;
+
+                .icon-wrap i {
+                    background-color: #F47920;
+                }
+            }
+        }
+
+        &:nth-child(11n+3) {
+            a.engagement:hover, .engagement-detail {
+                box-shadow: inset 3px 0px 0px 0px #006a98;
+            }
+
+            .icon-wrap i {
+                background-color: #006a98;
+            }
+        }
+
+        &:nth-child(11n+4) {
+            a.engagement:hover, .engagement-detail {
+                box-shadow: inset 3px 0px 0px 0px #FABD2E;
+            }
+
+            .icon-wrap i {
+                background-color: #FABD2E;
+            }
+        }
+
+        &:nth-child(11n+5) {
+            a.engagement:hover, .engagement-detail {
+                box-shadow: inset 3px 0px 0px 0px #564138;
+            }
+
+            .icon-wrap i {
+                background-color: #564138;
+            }
+        }
+
+        &:nth-child(11n+6) {
+            a.engagement:hover, .engagement-detail {
+                box-shadow: inset 3px 0px 0px 0px #5B2333;
+            }
+
+            .icon-wrap i {
+                background-color: #5B2333;
+            }
+        }
+
+        &:nth-child(11n+7) {
+            a.engagement:hover, .engagement-detail {
+                box-shadow: inset 3px 0px 0px 0px #424B54;
+            }
+
+            .icon-wrap i {
+                background-color: #424B54;
+            }
+        }
+
+        &:nth-child(11n+8) {
+            a.engagement:hover, .engagement-detail {
+                box-shadow: inset 3px 0px 0px 0px #223127;
+            }
+
+            .icon-wrap i {
+                background-color: #424B54;
+            }
+        }
+
+        &:nth-child(11n+9) {
+            a.engagement:hover, .engagement-detail {
+                box-shadow: inset 3px 0px 0px 0px #540D6E;
+            }
+
+            .icon-wrap i {
+                background-color: #540D6E;
+            }
+        }
+
+        &:nth-child(11n+10) {
+            a.engagement:hover, .engagement-detail {
+                box-shadow: inset 3px 0px 0px 0px #F05D5E;
+            }
+
+            .icon-wrap i {
+                background-color: #F05D5E;
+            }
+        }
+
+        &:nth-child(11n+11) {
+            a.engagement:hover, .engagement-detail {
+                box-shadow: inset 3px 0px 0px 0px #5C415D;
+            }
+
+            .icon-wrap i {
+                background-color: #5C415D;
+            }
+        }
+    }
+
+
+    a.engagement {
+        color: $black;
+        display: block;
+        padding-top: 10px;
+        position: relative;
+        transition: all 0.4s ease 0s;
+
+        .location, .date {
+            padding-top: 5px;
+
+            i {
+                color: $color_grey;
+                display: inline-block;
+                margin-left: -32px;
+                vertical-align: middle;
+            }
+
+            p {
+                font-size: 12px;
+                color: $color_grey;
+                padding-left: 32px;
+                vertical-align: middle;
+            }
+        }
+
+        &:hover {
+
+            .handle {
+                display: block;
+            }
+        }
+    }
+
+    .handle {
+        transition: all 0.4s ease 0s;
+        position: absolute;
+        bottom: -16px;
+        margin-left: auto;
+        margin-right: auto;
+        left: 0;
+        right: 0;
+        background: #fff;
+        width: 200px;
+        border-radius: 0 0 4px 4px;
+        border-bottom: 1px solid #CCCCCC;
+        border-right: 1px solid #CCCCCC;
+        border-left: 1px solid #CCCCCC;
+        -webkit-box-shadow: 0px 1px 1px 0px rgba(50, 50, 50, 0.25);
+        -moz-box-shadow: 0px 1px 1px 0px rgba(50, 50, 50, 0.25);
+        box-shadow: 0px 1px 1px 0px rgba(50, 50, 50, 0.25);
+        height: 16px;
+        display: none;
+        z-index: 9;
+        font-size: 11px;
+        color: $color_grey;
+
+        i {
+            color: #ddd;
+        }
+    }
+
+    .engagement-detail {
+        // background: #f4f4f4;
+        padding: 15px 15px;
+        max-height: 1500px;
+        overflow: auto;
+        font-size: 14px;
+
+        h4 {
+            font-size: 20px;
+        }
+
+        .icon-wrap {
+            padding-left: 40px;
+
+            i {
+                margin-left: -40px;
+                font-size: 24px;
+                height: 40px;
+                width: 40px;
+                border-radius: 50%;
+                color: $white;
+                text-align: center;
+                vertical-align: middle;
+                line-height: 40px;
+            }
+        }
+
+        h2, h4 {
+            padding-bottom: 10px;
+        }
+    }
+}
+
+.btn-facebook {
+    background-color: #3B5999;
+    color: #fffffe;
+
+    &:focus, &:active, &.active {
+        background: #8b9dc3;
+        color: #fffffe;
+    }
+
+    &:hover {
+        color: #ddd;
+    }
+}
+
+.underline {
+    border-bottom: 1px solid;
+}
+
+//date square
+.event-date {
+    border: 1px solid #EEE;
+    width: 50px;
+    text-align: center;
+
+    ins {
+        font-size: 30px;
+        text-decoration: none;
+        display: block;
+        background-color: #5e5e5e;
+        color: #FFF;
+    }
+
+    span {
+        background-color: #FFF;
+        color: #555;
+        font-size: 10px;
+        font-weight: 600;
+        display: block;
+        padding: 2px;
+        text-transform: uppercase;
+    }
+}

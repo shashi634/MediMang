@@ -1,0 +1,50 @@
+﻿<div class="left_nav">
+    <div class="left_nav_slidebar" ng-controller="NavigationController">
+
+        <ul >
+            <li ng-repeat="(name, item) in menu" ng-class="{left_nav_active : ActiveNavItem==name}" uib-tooltip="{{item.displayName}}" tooltip-placement="right" ng-show="{{item.show}}">
+                <a ng-if="!item.uiSref" href="{{item.href}}" target="_self">
+                    <i class="fa {{item.icon}}"></i> <span class="hide-collapsed">{{item.displayName}}</span>
+                </a>
+                <a ng-if="item.uiSref" ui-sref="{{item.uiSref}}">
+                    <i class="fa {{item.icon}}"></i> <span class="hide-collapsed">{{item.displayName}}</span>
+                </a>
+
+                <ul ng-if="item.subMenu != null">
+                    <li ng-repeat="(subName, subItem) in item.subMenu">
+
+                        <a ng-show="subItem.show" ng-if="subItem.uiSref"
+                           ui-sref="{{subItem.uiSref || undefined}}" ui-sref-opts="{notify: true}">
+                            {{subItem.displayName}}
+
+                        </a>
+
+                        <a ng-show="subItem.show" ng-if="!subItem.uiSref" href="{{subItem.href }}">
+                            {{subItem.displayName}}
+                        </a>
+                        <ul ng-if="subItem.subSubNav  != null">
+                            <li ng-repeat="(subName, subSubNav) in subItem.subSubNav | orderObjectBy:'displayName'">
+                                <a ng-if="subSubNav.uiSref" ng-href="{{subSubNav.href }}"
+                                   ng-attr-ui-sref="{{subSubNav.uiSref || undefined}}" ui-sref-opts="{reload: true, notify: true}">
+                                    {{subSubNav.displayName}}
+                                </a>
+
+                                <a ng-if="subSubNav.href " ng-href="{{subSubNav.href }}">
+                                    {{subSubNav.displayName}}
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </li>
+        </ul>
+
+        
+
+    </div>
+    <div class="text-center menu-toggle clear_both">
+        <i class="fa fa-angle-left " ng-click="$emit('ToggleMenuCollapse');"></i>
+    </div>
+</div>
+<!--\\\\\\\left_nav end \\\\\\-->

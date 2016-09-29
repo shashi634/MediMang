@@ -1,0 +1,153 @@
+﻿<div class="header_bar">
+    <!-- header Start \\\\\\-->
+
+    <div class="header_top_bar">
+        <!-- header top bar start \\\\\\-->
+        @*<a href="javascript:void(0);" class="menu_icon"> <i class="fa fa-circle-o-notch spin-on-loading"></i> </a>*@
+        <a ui-sref="home" class="menu_icon brand">
+            @*<product-logo cssclass="brand"></product-logo>
+            <product-logo cssclass="brand-square" ratio="square"></product-logo>*@
+        </a>
+
+        <div class="top_right_bar" ng-controller="HeaderController">
+
+            <!--This is for Save Messages - Do NOT remove -->
+            <div class="top_right">
+                <div growl reference="3" limit-messages="1" inline="true" class="pull-left"></div>
+                <div class="top_right_menu">
+
+                </div>
+
+            </div>
+
+            <div class="hidden-sm hidden-xs header_toolbar">
+                <a ng-if='isImpersonating' tooltip-placement="bottom" class="menu_icon alert-danger" href ng-click="StopImpersonating()" uib-tooltip="Stop Impersonating" tooltip-append-to-body='true'
+                   confirm="Are you sure you want to stop impersonating this user?"><i class="fa fa-stop-circle "></i></a>
+                <a href="javascript:void(0);"
+                   class="menu_icon"
+                   tooltip-placement="bottom"
+                   uib-tooltip="Quick search" tooltip-append-to-body='true'
+                   ng-click="showSearch()"><i class="fa fa-search"></i></a><a class="menu_icon"
+                                                                              tooltip-placement="bottom"
+                                                                              uib-tooltip="Help Center" tooltip-append-to-body='true'
+                                                                              href="https://frontstream.zendesk.com/hc/en-us" target="_blank">
+                    <i class="fa fa-question fa-fw"></i>
+                </a><span uib-dropdown class="menu_icon" ng-if="messages && messages.length" dropdown-append-to-body="true">
+                    <span class="fa-stack" uib-dropdown-toggle uib-tooltip="Messages" tooltip-append-to-body="true" tooltip-placement="bottom">
+                        <i class=" fa fa-envelope fa-stack-1x"></i><sup class="badge">{{messages.length}}</sup>
+                    </span>
+                    <ul class="dropdown-menu dropdown-menu-right message-list" uib-dropdown-menu>
+                        <li ng-repeat="m in messages">
+                            <a href ng-click="OpenMessage(m)">
+                                <img ng-if="m.ImageUrl" class="img-circle" ng-src='{{m.ImageUrl }}' />
+                                <i ng-if="!m.ImageUrl" class="fa fa-info-circle fa-2x"></i>
+                                <h4>
+                                    {{m.MessageTitle}}
+                                    <small class="pull-right">{{m.MessageStartDate | MvcDateFormat:"mmm d, yyyy"}}</small>
+                                    <small>
+
+                                        <span ng-bind-html="truncate(m.MessageText, 50)"></span>
+
+                                    </small>
+                                </h4>
+                            </a>
+                        </li>
+                    </ul>
+                </span><a class="menu_icon"
+                          tooltip-placement="bottom"
+                          uib-tooltip="Applications" tooltip-append-to-body='true'
+                          href="https://frontstream.zendesk.com/hc/en-us" target="_blank">
+                    <i class="fa fa-th fa-fw"></i>
+                </a><a uib-tooltip="Log out" tooltip-append-to-body="true" tooltip-placement="bottom"
+                       href="/common/user/logout" class="menu_icon">
+                    <i class="fa fa-power-off"></i>
+                </a><a tooltip-placement="bottom" ng-if="CurrentUser.IsInternalAdmin"
+                       uib-tooltip="Your account" tooltip-append-to-body='true'
+                       class="menu_icon" ui-sref="edituser({userGuid: CurrentUser.UserGuid})" ng-show="(isLoggedIn)">
+                    <user-icon-md first="{{fName}}" last="{{lName}}" size="40"></user-icon-md>
+                </a><a tooltip-placement="bottom" ng-if="!CurrentUser.IsInternalAdmin"
+                       uib-tooltip="Your account" tooltip-append-to-body='true'
+                       class="menu_icon" ui-sref="edituserprofile({userGuid: CurrentUser.UserGuid,orgId:CurrentUser.OrganizationGuid})" ng-show="(isLoggedIn)">
+                    <user-icon-md first="{{fName}}" last="{{lName}}" size="40"></user-icon-md>
+                </a>
+            </div>
+
+
+            @*mobile menu*@
+
+            <div class="visible-sm visible-xs header_toolbar">
+                <span uib-dropdown class="menu_icon" dropdown-append-to-body="true">
+
+                    <i uib-dropdown-toggle class=" fa fa-bars "></i>
+
+                    <ul class="dropdown-menu dropdown-menu-right message-list" uib-dropdown-menu>
+                        <li>
+                            <a ui-sref="edituser({userGuid: CurrentUser.UserGuid})" ng-show="(isLoggedIn)">
+
+                                <user-icon first="{{fName}}" last="{{lName}}" size="40"></user-icon>
+                                <h4>Your account</h4>
+                            </a>
+                        </li>
+                        <li ng-if="messages && messages.length">
+                            <a ui-sref="home">
+                                @*could make real messages page someday*@
+                                <i class="fa fa-envelope"></i>
+                                <h4>Messages ({{messages.length}})</h4>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://frontstream.zendesk.com/hc/en-us" target="_blank">
+                                <i class="fa fa-question"></i>
+                                <h4>Help center</h4>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/common/user/logout">
+                                <i class="fa fa-power-off"></i>
+                                <h4>Log out</h4>
+                            </a>
+                        </li>
+                    </ul>
+                </span>
+            </div>
+        </div>
+    </div>
+    <!-- header top bar end \\\\\\-->
+
+    @*<div class="container header_search" id="header_search" ng-controller="HeaderSearchController" ng-show="ShowSearch">
+        <div class="row">
+            <form class="col-xs-8 col-xs-offset-2 no-animate">
+                <div class="input-group input-group-lg">
+
+                    <ui-select ng-model="constituent"
+                               on-select="select($item, $model)"
+                               focus-on="setFocus"
+                               append-to-body="true">
+                        <ui-select-match placeholder="Find a constituent...">{{$select.selected.FirstName || 'Find a constituent...'}} {{$select.selected.LastName}}</ui-select-match>
+                        <ui-select-choices repeat="r in results | filter:$select.search" refresh="funcAsync($select.search)" refresh-delay="200">
+                            <span ng-bind-html="r.FirstName | highlight: $select.search"></span> <span ng-bind-html="r.LastName | highlight: $select.search"></span>
+                        </ui-select-choices>
+                    </ui-select>
+
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+                    </span>
+                </div>
+            </form>
+        </div>
+    </div>*@
+</div>
+@*todo move to template*@
+<script type="text/ng-template" id="message.html">
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="ok()"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title">{{Message.MessageTitle}}</h3>
+    </div>
+    <div class="modal-body">
+        <img ng-src="{{Message.ImageUrl}}" class="img-responsive pull-left img-pad">
+        <div class="reset-user-content" ng-bind-html="trustHtml()"></div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="ok()">Close</button>
+    </div>
+</script>
