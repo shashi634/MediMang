@@ -9,20 +9,13 @@
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/angular")
     @Styles.Render("~/bundles/css/plugins")
-    @Styles.Render("~/bundles/css/bootstrap")
+    @*@Styles.Render("~/bundles/css/bootstrap")*@
 </head>
-<body class="light_theme  fixed_header left_nav_fixed blue_thm" ng-class="BodyClass" ng-controller="BodyController"  flow-prevent-drop>
-    @*<div ng-if="false">
-        <div class="block-ui-overlay"></div><div class="block-ui-message-container"><div class="block-ui-message"><i class="fa fa-cog fa-spin fa-5x"></i></div></div>
-    </div>*@
-
-    <div  class="wrapper" >
-        @Html.Partial("~/Views/Shared/_HeaderBar.cshtml")
-        <div class="inner">
-            @Html.Partial("~/Views/Shared/_MenuNav.cshtml")
-            <div block-ui="main">
-                @RenderBody()
-            </div>
+<body>
+    <div class="wrapper">
+        @Html.Partial("~/Views/Shared/_MenuNav.cshtml")
+        <div id="page-wrapper" block-ui="main">
+            @RenderBody()
         </div>
     </div>
     <div growl></div>
@@ -30,9 +23,8 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.4.0/fullcalendar.min.js"></script>
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/app")
+    <script src="/bundles/templates"></script> 
+    @Scripts.Render("~/bundles/theme")
     @RenderSection("scripts", required: false)
-
-
 </body>
-
 </html>
