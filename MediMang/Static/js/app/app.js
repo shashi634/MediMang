@@ -12,8 +12,28 @@ var app = angular.module('app', [
         'ct.ui.router.extras.sticky',
         'ct.ui.router.extras.dsr',
         'ct.ui.router.extras.previous',
-        'blockUI'
-])
+        'blockUI',
+        'angular-growl',
+        'analytics',
+        //UI Grid
+        'ui.grid',
+        'ui.grid.pagination',
+        'ui.grid.edit',
+        'ui.grid.saveState',
+        'ui.grid.selection',
+        'ui.grid.cellNav',
+        'ui.grid.resizeColumns',
+        'ui.grid.moveColumns',
+        'ui.grid.pinning',
+        'ui.grid.autoResize',
+        'ui.grid.exporter',
+        'ui.grid.grouping',
+]).config([
+        '$httpProvider', function ($httpProvider) {
+            $httpProvider.interceptors.push('XSS');
+            $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
+        }
+    ])
 .config([
     'blockUIConfig', function (blockUiConfig) {
         blockUiConfig.template = '<div class=\"block-ui-overlay\"></div><div class=\"block-ui-message-container\" aria-live=\"assertive\" aria-atomic=\"true\"><div class=\"block-ui-message\" ng-class=\"$_blockUiMessageClass\"><i class="fa fa-cog fa-spin fa-5x"></i></div></div>';

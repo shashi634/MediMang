@@ -86,9 +86,8 @@ namespace MediMang
                        "~/Static/js", "*.js", true));
             bundles.Add(new ScriptBundle("~/bundles/theme").IncludeDirectory(
                        "~/Scripts/theme", "*.js", true));
-            //bundles.Add(new StyleBundle("~/bundles/css/bootstrap").IncludeDirectory(
-            //          "~/Static/Css/bootstrap",
-            //          "*.css", false));
+            bundles.Add(new ScriptBundle("~/bundles/plugins").IncludeDirectory(
+                       "~/Static/plugins", "*.js", true));
             bundles.Add(new StyleBundle("~/bundles/css/plugins").IncludeDirectory(
                       "~/Static/plugins",
                       "*.css", true
@@ -100,4 +99,6 @@ namespace MediMang
                       ));
         }
     }
+
+   
 }

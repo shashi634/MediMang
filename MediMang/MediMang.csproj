@@ -237,6 +237,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AppController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -287,17 +288,51 @@
     <Content Include="Scripts\theme\raphael.min.js" />
     <Content Include="Scripts\theme\sb-admin-2.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Content\app.css" />
+    <Content Include="Content\helpers.css" />
+    <Content Include="Content\xeditable.css" />
     <Content Include="Static\Fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="Static\js\app.js" />
+    <Content Include="Static\js\app\app.js" />
     <Content Include="Static\js\app\constant\GridDefinitions.js" />
     <Content Include="Static\js\app\constant\Menu.js" />
     <Content Include="Static\js\app\controller\LayoutController.js" />
     <Content Include="Static\js\app\controller\HeaderController.js" />
     <Content Include="Static\js\app\controller\NavigationController.js" />
-    <Content Include="Static\js\global.js" />
-    <Content Include="Static\js\ripples.js" />
-    <Content Include="Static\js\Routes.js" />
-    <Content Include="Static\js\xmaterial.js" />
+    <Content Include="Static\js\app\directives\UI\block-ui.js" />
+    <Content Include="Static\js\app\directives\UI\bootstrap-select.js" />
+    <Content Include="Static\js\app\directives\UI\bootstrap-show-errors.js" />
+    <Content Include="Static\js\app\directives\UI\calendar.js" />
+    <Content Include="Static\js\app\directives\UI\ckeditor-preview.js" />
+    <Content Include="Static\js\app\directives\UI\ckeditor.js" />
+    <Content Include="Static\js\app\directives\UI\confirm.js" />
+    <Content Include="Static\js\app\directives\UI\ErrorList.js" />
+    <Content Include="Static\js\app\directives\UI\FloatingLabel.js" />
+    <Content Include="Static\js\app\directives\UI\focusfirst.js" />
+    <Content Include="Static\js\app\directives\UI\HoverClass.js" />
+    <Content Include="Static\js\app\directives\UI\loading-bar.js" />
+    <Content Include="Static\js\app\directives\UI\locationAutocomplete.js" />
+    <Content Include="Static\js\app\directives\UI\ProductLogo.js" />
+    <Content Include="Static\js\app\directives\UI\select.js" />
+    <Content Include="Static\js\app\directives\UI\uiBreadcrumbs.js" />
+    <Content Include="Static\js\app\directives\UI\vertilize.js" />
+    <Content Include="Static\js\app\services\analyticsService.js" />
+    <Content Include="Static\js\app\services\authorizeService.js" />
+    <Content Include="Static\js\app\services\customFieldService.js" />
+    <Content Include="Static\js\app\services\gridService.js" />
+    <Content Include="Static\js\app\services\locationService.js" />
+    <Content Include="Static\js\app\services\picklistService.js" />
+    <Content Include="Static\js\app\services\serverValidations.js" />
+    <Content Include="Static\js\app\services\splitPledgeService.js" />
+    <Content Include="Static\js\app\services\uiGridHelperService.js" />
+    <Content Include="Static\js\app\services\urlHelperService.js" />
+    <Content Include="Static\js\app\services\XSS.js" />
+    <Content Include="Static\js\app\ct-ui-router-extras.js" />
+    <Content Include="Static\js\app\global.js" />
+    <Content Include="Static\js\app\ripples.js" />
+    <Content Include="Static\js\app\Routes.js" />
+    <Content Include="Static\js\app\xmaterial.js" />
+    <Content Include="Static\js\shared\staticMap.js" />
+    <Content Include="Static\js\shared\TermReplacement.js" />
     <Content Include="Static\plugins\angular-block-ui.css" />
     <Content Include="Static\plugins\angular-filter.js" />
     <Content Include="Static\plugins\angular-ui-router.js" />
@@ -309,6 +344,23 @@
     <Content Include="Static\plugins\ng-flow-standalone.js" />
     <Content Include="Static\plugins\ui-grid.css" />
     <Content Include="Static\plugins\ui-grid.svg" />
+    <Content Include="Static\templates\home.html" />
+    <Content Include="Static\js\vendor\angular-bootstrap-datetimepicker\src\js\datetimepicker.js" />
+    <Content Include="Static\js\vendor\angular-bootstrap-datetimepicker\src\js\datetimepicker.templates.js" />
+    <Content Include="Static\js\vendor\angular-bootstrap-datetimepicker\src\js\templates\datetimepicker.html" />
+    <Content Include="Static\js\vendor\angular-date-time-input\date-time-input.js" />
+    <Content Include="Static\js\vendor\angular-growl.js" />
+    <Content Include="Static\js\vendor\angular-moment.min.js" />
+    <Content Include="Static\js\vendor\angular-translate\angular-translate.js" />
+    <Content Include="Static\js\vendor\angular-ui-tree.js" />
+    <Content Include="Static\js\vendor\moment.min.js" />
+    <Content Include="Static\js\vendor\ngFacebook.js" />
+    <Content Include="Static\js\vendor\Pager.js" />
+    <Content Include="Static\js\vendor\ui-bootstrap-tpls-0.13.4.min.js" />
+    <Content Include="Static\js\vendor\ui-bootstrap-tpls-1.2.0.js" />
+    <Content Include="Static\js\vendor\ui-grid.js" />
+    <Content Include="Static\js\vendor\xeditable.js" />
+    <Content Include="Static\js\vendor\z-ui-grid-exporter.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -323,7 +375,6 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Static\CSS\theme\bootstrap-theme.xcss" />
     <Content Include="Static\Fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Static\Fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Static\Fonts\glyphicons-halflings-regular.woff" />
@@ -353,14 +404,13 @@
     <Content Include="Static\plugins\ui-grid.woff" />
     <Content Include="Views\Shared\_HeaderBar.cshtml" />
     <Content Include="Views\Shared\_MenuNav.cshtml" />
+    <Content Include="Views\App\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Static\js\app\directives\" />
+    <Folder Include="Static\CSS\theme\" />
     <Folder Include="Static\js\app\repository\" />
-    <Folder Include="Static\js\app\services\" />
-    <Folder Include="Static\templates\" />
-    <Folder Include="Static\vendor\" />
+    <Folder Include="Static\js\vendor\charts\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
