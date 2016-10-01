@@ -42,15 +42,15 @@ app.config([
                          parentRoute: null
                      }
                  })
-                .state('reports', {
-                    url: '/reports',
+                .state('myHome2', {
                     parent: 'abstract',
+                    url: '/myHome2',
+                    dsr: true,
                     sticky: true,
-                    templateUrl: '/static/templates/reports/index.html',
-                    controller: 'ReportsController',
+                    templateUrl: '/static/templates/a.html',
                     data: {
-                        displayName: 'Reports',
-                        parentRoute: 'home'
+                        displayName: 'myHome',
+                        parentRoute: null
                     }
                 })
                 .state('report', {

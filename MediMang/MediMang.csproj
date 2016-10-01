@@ -344,6 +344,7 @@
     <Content Include="Static\plugins\ng-flow-standalone.js" />
     <Content Include="Static\plugins\ui-grid.css" />
     <Content Include="Static\plugins\ui-grid.svg" />
+    <Content Include="Static\templates\a.html" />
     <Content Include="Static\templates\home.html" />
     <Content Include="Static\js\vendor\angular-bootstrap-datetimepicker\src\js\datetimepicker.js" />
     <Content Include="Static\js\vendor\angular-bootstrap-datetimepicker\src\js\datetimepicker.templates.js" />
