@@ -20,7 +20,8 @@ app.config([
         (function () {
 
             $stateProvider
-                .state('home', {
+                .state('home',
+                {
                     parent: 'abstract',
                     url: '/home',
                     dsr: true,
@@ -31,55 +32,52 @@ app.config([
                         parentRoute: null
                     }
                 })
-                 .state('myHome', {
-                     parent: 'abstract',
-                     url: '/myHome',
-                     dsr: true,
-                     sticky: true,
-                     templateUrl: '/static/templates/home.html',
-                     data: {
-                         displayName: 'myHome',
-                         parentRoute: null
-                     }
-                 })
-                .state('myHome2', {
+                .state('subjects',
+                {
                     parent: 'abstract',
-                    url: '/myHome2',
+                    url: '/subjects',
                     dsr: true,
                     sticky: true,
-                    templateUrl: '/static/templates/a.html',
+                    templateUrl: '/static/templates/subjects.html',
                     data: {
-                        displayName: 'myHome',
+                        displayName: 'subjects',
                         parentRoute: null
                     }
                 })
-                .state('report', {
-                    url: '/report?report',
+                .state('questions',
+                {
                     parent: 'abstract',
+                    url: '/questions',
+                    dsr: true,
                     sticky: true,
-                    templateUrl: '/static/templates/reports/index.html',
-                    controller: 'ReportsController',
+                    templateUrl: '/static/templates/questions.html',
                     data: {
-                        // todo: resolve report name
-                        displayName: 'View Report',
-                        parentRoute: 'reports'
+                        displayName: 'questions',
+                        parentRoute: null
                     }
-                }) // this was done because you were not able to go from a specific canned report back to the reports page
-                .state('smartlist', {
-                    url: '/reports/smartlist?smartListGuid=&reportTypeName=',
+                })
+                .state('setting',
+                {
                     parent: 'abstract',
+                    url: '/setting',
+                    dsr: true,
                     sticky: true,
-                    templateUrl: '/static/templates/reports/smartlist.html',
-                    controller: 'SmartListController',
-                    params: {
-                        reportTypes: []
-                    },
+                    templateUrl: '/static/templates/setting.html'
+                    
+                })
+                .state('students',
+                {
+                    parent: 'abstract',
+                    url: '/students',
+                    dsr: true,
+                    sticky: true,
+                    templateUrl: '/static/templates/students.html',
                     data: {
-                        // todo: resolve report name
-                        displayName: 'View Smartlist',
-                        parentRoute: 'reports'
+                        displayName: 'students',
+                        parentRoute: null
                     }
                 });
+                
 
 
             $stateProvider

@@ -11,7 +11,7 @@
     @Styles.Render("~/bundles/css/plugins")
 </head>
 <body>
-    <div class="wrapper">
+    <div class="wrapper" ng-controller="LayoutController">
         @Html.Partial("~/Views/Shared/_MenuNav.cshtml")
         <div id="page-wrapper" block-ui="main">
             @RenderBody()
