@@ -27,7 +27,8 @@ var app = angular.module('app', [
         'ui.grid.pinning',
         'ui.grid.autoResize',
         'ui.grid.exporter',
-        'ui.grid.grouping',
+        'ui.grid.grouping'
+
 ]).config([
         '$httpProvider', function ($httpProvider) {
             $httpProvider.interceptors.push('XSS');

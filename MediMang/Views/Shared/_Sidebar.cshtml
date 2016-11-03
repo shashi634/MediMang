@@ -1,0 +1,54 @@
+﻿<aside class="main-sidebar">
+    <section class="sidebar">
+        <div class="user-panel">
+            <div class="pull-left image">
+                <img src="/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+            </div>
+            <div class="pull-left info">
+                <p>{{host.name}}</p>
+                <a href="#"><i class="fa fa-circle text-success"></i> {{host.active}}</a>
+            </div>
+        </div>
+        <ul class="sidebar-menu">
+            <li class="treeview active">
+                <a href="#">
+                    <i class="glyphicon glyphicon-cog"></i> <span>Setting</span> <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="/Host/ListPoperty"><i class="glyphicon glyphicon-home"></i> Room</a></li>
+                    <li><a href="/Host/Facilities"><i class="glyphicon glyphicon-star-empty"></i> Facility</a></li>
+                    <li><a href="/Host/Rules"><i class="glyphicon glyphicon-eye-open"></i> Rules</a></li>
+                    <li><a href="/Host/PopertyFair"><i class="glyphicon glyphicon-usd"></i> Price</a></li>
+                    <li><a href="/Host/Avalibility"><i class="glyphicon glyphicon-th"></i> Availability</a></li>
+                </ul>
+            </li>
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="glyphicon glyphicon-envelope"></i>
+                    <span>Message</span>
+                    <span class="label label-primary pull-right">{{host.UnreadMessages}}</span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="active"><a href="#"><i class="glyphicon glyphicon-eye-close"></i> Unread Messages</a></li>
+                    <li><a href="#"><i class="glyphicon glyphicon-eye-open"></i> Send Message</a></li>
+                    <li><a href="#"><i class="glyphicon glyphicon-folder-close"></i> Messages</a></li>
+                    <li><a href="#"><i class="glyphicon glyphicon-bullhorn"></i> Feedback</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="glyphicon glyphicon-sunglasses"></i>
+                    <span>Guest</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="#"><i class="glyphicon glyphicon-bed"></i> Hosted Guest</a></li>
+                    <li><a href="#"><i class="glyphicon glyphicon-hourglass"></i> Upcomming Guest</a></li>
+                    <li><a href="#"><i class="glyphicon glyphicon-bullhorn"></i> Feedback</a></li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+    <!-- /.sidebar -->
+</aside>

@@ -10,13 +10,17 @@
     @Scripts.Render("~/bundles/modernizr")
     @Styles.Render("~/bundles/css/plugins")
 </head>
-<body>
-    <div class="wrapper" ng-controller="LayoutController">
-        @Html.Partial("~/Views/Shared/_MenuNav.cshtml")
-        <div id="page-wrapper" block-ui="main">
-            @RenderBody()
-        </div>
+<body class="hold-transition skin-blue fixed sidebar-mini">
+<div class="wrapper" ng-controller="LayoutController">
+    @Html.Partial("_Header")
+
+
+    @Html.Partial("_Sidebar")
+    @*@Html.Partial("~/Views/Shared/_MenuNav.cshtml")*@
+    <div  class="content-wrapper" block-ui="main">
+        @RenderBody()
     </div>
+</div>
     <div growl></div>
     <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.4.0/fullcalendar.min.js"></script>
@@ -25,7 +29,7 @@
     @Scripts.Render("~/bundles/app")
     @Scripts.Render("~/bundles/plugins")
     <script src="/bundles/templates"></script> 
-    @Scripts.Render("~/bundles/theme")
+    @*@Scripts.Render("~/bundles/theme")*@
     @RenderSection("scripts", required: false)
 </body>
 </html>

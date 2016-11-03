@@ -249,15 +249,22 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\AdminLTE.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\growl.css" />
     <Content Include="Content\metisMenu.min.css" />
     <Content Include="Content\morris.css" />
+    <Content Include="Content\reset.css" />
+    <Content Include="Content\responsive-leyouts.css" />
     <Content Include="Content\sb-admin-2.css" />
     <Content Include="Content\sb-admin-2.min.css" />
+    <Content Include="Content\style.css" />
+    <Content Include="Content\_all-skins.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="img\user2-160x160.jpg" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Scripts\angular\angular-animate.js" />
@@ -336,11 +343,15 @@
     <Content Include="Static\plugins\angular-block-ui.css" />
     <Content Include="Static\plugins\angular-filter.js" />
     <Content Include="Static\plugins\angular-ui-router.js" />
+    <Content Include="Static\plugins\app.min.js" />
     <Content Include="Static\plugins\bootstrap-select.css" />
     <Content Include="Static\plugins\bootstrap-select.js" />
+    <Content Include="Static\plugins\demo.js" />
+    <Content Include="Static\plugins\fastclick.min.js" />
     <Content Include="Static\plugins\font-awesome-4.3.0\fonts\fontawesome-webfont.svg" />
     <Content Include="Static\plugins\font-awesome-4.3.0\scss\font-awesome.css" />
     <Content Include="Static\plugins\fullcalendar.min.css" />
+    <Content Include="Static\plugins\jquery.slimscroll.min.js" />
     <Content Include="Static\plugins\ng-flow-standalone.js" />
     <Content Include="Static\plugins\ui-grid.css" />
     <Content Include="Static\plugins\ui-grid.svg" />
@@ -409,6 +420,8 @@
     <Content Include="Views\Shared\_HeaderBar.cshtml" />
     <Content Include="Views\Shared\_MenuNav.cshtml" />
     <Content Include="Views\App\Index.cshtml" />
+    <Content Include="Views\Shared\_Header.cshtml" />
+    <Content Include="Views\Shared\_Sidebar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

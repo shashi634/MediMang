@@ -40,6 +40,13 @@
                     icon: "fa-cog",
                     show: true,
                     uiSref: "setting"
+                },
+                QuestionSet:
+                {
+                    displayName: "QuestionSet",
+                    icon: "fa-cog",
+                    show: true,
+                    uiSref: "questionSet"
                 }
             }
             return menu;

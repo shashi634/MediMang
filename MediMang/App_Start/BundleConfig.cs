@@ -72,8 +72,8 @@ namespace MediMang
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.min.css",
-                      "~/Content/metisMenu.min.css", 
-                      "~/Content/sb-admin-2.css"));
+                      "~/Content/_all-skins.min.css",
+                      "~/Content/AdminLTE.min.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
                 "~/Scripts/angular/angular.js",
